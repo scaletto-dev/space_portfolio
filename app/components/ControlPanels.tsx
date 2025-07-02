@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 type PanelType = 'profile' | 'skills' | 'projects' | 'contact';
 
@@ -57,161 +57,161 @@ const StatusLight: React.FC<StatusLightProps> = ({ active }) => (
   </div>
 );
 
-const SystemMonitor = () => {
-  const [logs, setLogs] = useState<string[]>([]);
-  const [cpuUsage, setCpuUsage] = useState(0);
-  const [memoryUsage, setMemoryUsage] = useState(0);
-  const [networkSpeed, setNetworkSpeed] = useState(0);
-  const [timestamp, setTimestamp] = useState('');
+// const SystemMonitor = () => {
+//   const [logs, setLogs] = useState<string[]>([]);
+//   const [cpuUsage, setCpuUsage] = useState(0);
+//   const [memoryUsage, setMemoryUsage] = useState(0);
+//   const [networkSpeed, setNetworkSpeed] = useState(0);
+//   const [timestamp, setTimestamp] = useState('');
 
-  useEffect(() => {
-    const updateMetrics = () => {
-      setCpuUsage(Math.random() * 30 + 60);
-      setMemoryUsage(Math.random() * 20 + 70);
-      setNetworkSpeed(Math.random() * 500 + 100);
+//   useEffect(() => {
+//     const updateMetrics = () => {
+//       setCpuUsage(Math.random() * 30 + 60);
+//       setMemoryUsage(Math.random() * 20 + 70);
+//       setNetworkSpeed(Math.random() * 500 + 100);
       
-      const now = new Date();
-      setTimestamp(now.toISOString().split('T')[1].split('.')[0]);
+//       const now = new Date();
+//       setTimestamp(now.toISOString().split('T')[1].split('.')[0]);
       
-      const newLog = [
-        'Scanning quantum networks...',
-        'Analyzing space-time coordinates...',
-        'Monitoring system resources...',
-        'Checking shield integrity...',
-        'Updating navigation data...',
-        'Calibrating sensors...',
-        'Processing telemetry data...',
-        'Syncing with satellite network...',
-      ][Math.floor(Math.random() * 8)];
+//       const newLog = [
+//         'Scanning quantum networks...',
+//         'Analyzing space-time coordinates...',
+//         'Monitoring system resources...',
+//         'Checking shield integrity...',
+//         'Updating navigation data...',
+//         'Calibrating sensors...',
+//         'Processing telemetry data...',
+//         'Syncing with satellite network...',
+//       ][Math.floor(Math.random() * 8)];
 
-      setLogs(prev => [...prev.slice(-4), `[${timestamp}] ${newLog}`]);
-    };
+//       setLogs(prev => [...prev.slice(-4), `[${timestamp}] ${newLog}`]);
+//     };
 
-    const interval = setInterval(updateMetrics, 2000);
-    return () => clearInterval(interval);
-  }, [timestamp]);
+//     const interval = setInterval(updateMetrics, 2000);
+//     return () => clearInterval(interval);
+//   }, [timestamp]);
 
-  return (
-    <div className="mt-8 bg-black/40 border border-cyan-400/30 rounded-lg p-4 font-mono">
-      <div className="flex items-center justify-between mb-4">
-        <div className="text-cyan-400 text-sm">SYSTEM MONITOR</div>
-        <div className="text-cyan-400/70 text-sm">{timestamp}</div>
-      </div>
+//   return (
+//     <div className="mt-8 bg-black/40 border border-cyan-400/30 rounded-lg p-4 font-mono">
+//       <div className="flex items-center justify-between mb-4">
+//         <div className="text-cyan-400 text-sm">SYSTEM MONITOR</div>
+//         <div className="text-cyan-400/70 text-sm">{timestamp}</div>
+//       </div>
 
-      <div className="grid grid-cols-3 gap-4 mb-6">
-        {/* CPU Usage */}
-        <div className="bg-black/30 border border-cyan-400/20 rounded p-3">
-          <div className="flex justify-between items-center mb-2">
-            <div className="text-cyan-400/70 text-sm">CPU</div>
-            <div className="text-cyan-400 text-sm">{cpuUsage.toFixed(1)}%</div>
-          </div>
-          <div className="w-full bg-gray-900 rounded-full h-1.5">
-            <motion.div
-              className="bg-gradient-to-r from-cyan-400 to-blue-400 h-1.5 rounded-full"
-              animate={{ width: `${cpuUsage}%` }}
-              transition={{ duration: 0.5 }}
-            />
-          </div>
-        </div>
+//       <div className="grid grid-cols-3 gap-4 mb-6">
+//         {/* CPU Usage */}
+//         <div className="bg-black/30 border border-cyan-400/20 rounded p-3">
+//           <div className="flex justify-between items-center mb-2">
+//             <div className="text-cyan-400/70 text-sm">CPU</div>
+//             <div className="text-cyan-400 text-sm">{cpuUsage.toFixed(1)}%</div>
+//           </div>
+//           <div className="w-full bg-gray-900 rounded-full h-1.5">
+//             <motion.div
+//               className="bg-gradient-to-r from-cyan-400 to-blue-400 h-1.5 rounded-full"
+//               animate={{ width: `${cpuUsage}%` }}
+//               transition={{ duration: 0.5 }}
+//             />
+//           </div>
+//         </div>
 
-        {/* Memory Usage */}
-        <div className="bg-black/30 border border-purple-400/20 rounded p-3">
-          <div className="flex justify-between items-center mb-2">
-            <div className="text-purple-400/70 text-sm">MEMORY</div>
-            <div className="text-purple-400 text-sm">{memoryUsage.toFixed(1)}%</div>
-          </div>
-          <div className="w-full bg-gray-900 rounded-full h-1.5">
-            <motion.div
-              className="bg-gradient-to-r from-purple-400 to-pink-400 h-1.5 rounded-full"
-              animate={{ width: `${memoryUsage}%` }}
-              transition={{ duration: 0.5 }}
-            />
-          </div>
-        </div>
+//         {/* Memory Usage */}
+//         <div className="bg-black/30 border border-purple-400/20 rounded p-3">
+//           <div className="flex justify-between items-center mb-2">
+//             <div className="text-purple-400/70 text-sm">MEMORY</div>
+//             <div className="text-purple-400 text-sm">{memoryUsage.toFixed(1)}%</div>
+//           </div>
+//           <div className="w-full bg-gray-900 rounded-full h-1.5">
+//             <motion.div
+//               className="bg-gradient-to-r from-purple-400 to-pink-400 h-1.5 rounded-full"
+//               animate={{ width: `${memoryUsage}%` }}
+//               transition={{ duration: 0.5 }}
+//             />
+//           </div>
+//         </div>
 
-        {/* Network Speed */}
-        <div className="bg-black/30 border border-green-400/20 rounded p-3">
-          <div className="flex justify-between items-center mb-2">
-            <div className="text-green-400/70 text-sm">NETWORK</div>
-            <div className="text-green-400 text-sm">{networkSpeed.toFixed(0)} MB/s</div>
-          </div>
-          <div className="w-full bg-gray-900 rounded-full h-1.5">
-            <motion.div
-              className="bg-gradient-to-r from-green-400 to-emerald-400 h-1.5 rounded-full"
-              animate={{ width: `${(networkSpeed / 600) * 100}%` }}
-              transition={{ duration: 0.5 }}
-            />
-          </div>
-        </div>
-      </div>
+//         {/* Network Speed */}
+//         <div className="bg-black/30 border border-green-400/20 rounded p-3">
+//           <div className="flex justify-between items-center mb-2">
+//             <div className="text-green-400/70 text-sm">NETWORK</div>
+//             <div className="text-green-400 text-sm">{networkSpeed.toFixed(0)} MB/s</div>
+//           </div>
+//           <div className="w-full bg-gray-900 rounded-full h-1.5">
+//             <motion.div
+//               className="bg-gradient-to-r from-green-400 to-emerald-400 h-1.5 rounded-full"
+//               animate={{ width: `${(networkSpeed / 600) * 100}%` }}
+//               transition={{ duration: 0.5 }}
+//             />
+//           </div>
+//         </div>
+//       </div>
 
-      {/* System Logs */}
-      <div className="bg-black/50 border border-cyan-400/20 rounded p-3">
-        <div className="text-cyan-400/70 text-sm mb-2">SYSTEM LOGS</div>
-        <div className="space-y-1">
-          {logs.map((log, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-sm"
-            >
-              <span className="text-green-400">&gt;</span>{" "}
-              <span className="text-white/70">{log}</span>
-            </motion.div>
-          ))}
-        </div>
-      </div>
+//       {/* System Logs */}
+//       <div className="bg-black/50 border border-cyan-400/20 rounded p-3">
+//         <div className="text-cyan-400/70 text-sm mb-2">SYSTEM LOGS</div>
+//         <div className="space-y-1">
+//           {logs.map((log, index) => (
+//             <motion.div
+//               key={index}
+//               initial={{ opacity: 0, x: -20 }}
+//               animate={{ opacity: 1, x: 0 }}
+//               className="text-sm"
+//             >
+//               <span className="text-green-400">&gt;</span>{" "}
+//               <span className="text-white/70">{log}</span>
+//             </motion.div>
+//           ))}
+//         </div>
+//       </div>
 
-      {/* Quick Stats */}
-      <div className="grid grid-cols-4 gap-4 mt-4">
-        <StatusIndicator
-          label="QUANTUM LINK"
-          value="STABLE"
-          color="cyan"
-          icon="📡"
-        />
-        <StatusIndicator
-          label="SHIELDS"
-          value="97.3%"
-          color="blue"
-          icon="🛡️"
-        />
-        <StatusIndicator
-          label="POWER"
-          value="OPTIMAL"
-          color="green"
-          icon="⚡"
-        />
-        <StatusIndicator
-          label="AI STATUS"
-          value="ONLINE"
-          color="purple"
-          icon="🤖"
-        />
-      </div>
-    </div>
-  );
-};
+//       {/* Quick Stats */}
+//       <div className="grid grid-cols-4 gap-4 mt-4">
+//         <StatusIndicator
+//           label="QUANTUM LINK"
+//           value="STABLE"
+//           color="cyan"
+//           icon="📡"
+//         />
+//         <StatusIndicator
+//           label="SHIELDS"
+//           value="97.3%"
+//           color="blue"
+//           icon="🛡️"
+//         />
+//         <StatusIndicator
+//           label="POWER"
+//           value="OPTIMAL"
+//           color="green"
+//           icon="⚡"
+//         />
+//         <StatusIndicator
+//           label="AI STATUS"
+//           value="ONLINE"
+//           color="purple"
+//           icon="🤖"
+//         />
+//       </div>
+//     </div>
+//   );
+// };
 
-interface StatusIndicatorProps {
-  label: string;
-  value: string;
-  color: string;
-  icon: string;
-}
+// interface StatusIndicatorProps {
+//   label: string;
+//   value: string;
+//   color: string;
+//   icon: string;
+// }
 
-const StatusIndicator: React.FC<StatusIndicatorProps> = ({ label, value, color, icon }) => (
-  <div className={`bg-black/30 border border-${color}-400/20 rounded p-2`}>
-    <div className="flex items-center space-x-2">
-      <div className="text-lg">{icon}</div>
-      <div>
-        <div className={`text-${color}-400/70 text-xs`}>{label}</div>
-        <div className={`text-${color}-400 text-sm`}>{value}</div>
-      </div>
-    </div>
-  </div>
-);
+// const StatusIndicator: React.FC<StatusIndicatorProps> = ({ label, value, color, icon }) => (
+//   <div className={`bg-black/30 border border-${color}-400/20 rounded p-2`}>
+//     <div className="flex items-center space-x-2">
+//       <div className="text-lg">{icon}</div>
+//       <div>
+//         <div className={`text-${color}-400/70 text-xs`}>{label}</div>
+//         <div className={`text-${color}-400 text-sm`}>{value}</div>
+//       </div>
+//     </div>
+//   </div>
+// );
 
 const ControlPanels = () => {
   const [activePanel, setActivePanel] = useState<PanelType>('profile');
